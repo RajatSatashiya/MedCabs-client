@@ -1,0 +1,63 @@
+body {
+  font-family: "Work Sans", sans-serif;
+}
+main {
+  margin: 4rem;
+  margin: auto;
+}
+.faq-heading {
+  font-family: Montserrat;
+  font-size: 3rem;
+  text-align: center;
+  margin: 2rem 0;
+  border-bottom: #777;
+}
+.hr-line {
+  width: 60%;
+  margin: auto;
+}
+.faq-page {
+  color: #444;
+  cursor: pointer;
+  padding: 30px 20px;
+  width: 60%;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  margin: auto;
+}
+.faq-body {
+  font-family: "Montserrat";
+  font-size: 1.2rem;
+  text-align: left;
+  margin: auto;
+  width: 50%;
+  padding: 30px 0px;
+  background-color: white;
+  display: none;
+  overflow: hidden;
+}
+.active,
+.faq-page:hover {
+  display: block;
+  background-color: #f9f9f9;
+}
+.faq-page:after {
+  content: "\02795";
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+.active:after {
+  content: "\2796";
+}
+.feedbackBtn {
+  font-family: Montserrat;
+  font-weight: bold;
+  font-size: 1.3rem;
+  background: #c4c4c4;
+  padding: 11px;
+  border: none;
+  border-radius: 5px;
+}

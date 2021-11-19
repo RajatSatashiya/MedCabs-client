@@ -1,0 +1,23 @@
+.driverPanel {
+  font-family: Montserrat;
+  background: #ececec;
+  padding: 5rem;
+}
+.driverData {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.8rem;
+}
+.driverdesc {
+  margin-bottom: 3rem;
+}
+.dtitle {
+  font-weight: bold;
+}
+.driverLogo {
+  text-align: center;
+}
+.driverImg img {
+  width: 20rem;
+}

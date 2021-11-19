@@ -1,0 +1,89 @@
+.landing {
+  width: 100%;
+  margin: 3rem 0 8rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.leftPart {
+  font-family: Montserrat;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: auto 0;
+  width: 40%;
+}
+.leftPart h1 {
+  font-size: 4rem;
+}
+.leftPart button {
+  font-family: Montserrat;
+  font-weight: bold;
+  font-size: 1.3rem;
+  background: #c4c4c4;
+  padding: 11px;
+  border: none;
+  border-radius: 5px;
+}
+.leftPart div {
+  font-size: 1.5rem;
+  margin: 2rem 0;
+}
+.mapimg {
+  width: 18rem;
+  margin-left: 2rem;
+}
+.subhead {
+  /* height: 40rem; */
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 50% 5rem 5rem;
+}
+.why,
+.feedback {
+  background: #ececec;
+}
+.features,
+.feedback {
+  padding: 7rem 10% 7rem 5rem;
+}
+.features{
+  padding-bottom: 14rem;
+}
+.desc {
+  font-family: Montserrat;
+  font-size: 2rem;
+}
+.topic {
+  font-family: Montserrat;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+.cabimg {
+  position: absolute;
+  bottom: -10%;
+  right: 35px;
+}
+.desc2 {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.userQue {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1.3rem;
+  width: 70%;
+  height: 10rem;
+  resize: none;
+  border: none;
+  outline: none;
+  opacity: 0.7;
+  padding: 10px 0px 10px 10px;
+  margin-top: 0px;
+  margin-bottom: 15px;
+}
+.reviews {
+  display: flex;
+}

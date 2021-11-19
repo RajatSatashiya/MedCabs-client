@@ -1,0 +1,18 @@
+.reviewPanel {
+  font-family: Roboto;
+  margin-top: 2rem;
+  margin-right: 20px;
+}
+.review,
+.reviewPanel i {
+  font-size: 1.7rem;
+  margin-bottom: 20px;
+}
+.author {
+  font-family: Montserrat;
+  font-size: 1.5rem;
+  background: #a5d8e8;
+  padding: 6px 40px 6px 10px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 0 black;
+}
