@@ -1,5 +1,6 @@
 import "./landing.css";
 import Reviews from "./reviews";
+import { Link } from "react-router-dom";
 
 function landing() {
   return (
@@ -11,7 +12,9 @@ function landing() {
             Feeling sick and unable to reach the clinic?? Med Cabs helps you
             find and book medical cabsnear you.
           </div>
-          <button>Book A Ride</button>
+          <Link to="/book">
+            <button style={{ cursor: "pointer" }}>Book A Ride</button>
+          </Link>
         </div>
         <div className="rightPart">
           <img

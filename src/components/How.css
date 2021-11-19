@@ -21,7 +21,7 @@
   aspect-ratio: 1;
   padding: 2.6rem;
   margin: auto;
-  margin-top: 2.5rem;
+  margin-bottom: 3.5rem;
   border-radius: 15px;
   box-shadow: 3px 3px 10px rgb(145, 145, 145);
 }
@@ -33,6 +33,7 @@
 .howimg {
   cursor: pointer;
   margin: auto;
+  margin-bottom: 3.5rem;
 }
 .howTitle {
   margin-top: 1rem;
