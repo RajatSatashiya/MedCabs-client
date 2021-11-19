@@ -21,6 +21,7 @@
   font-weight: bold;
   font-size: 1.3rem;
   background: #c4c4c4;
+  /* background: #0179fe; */
   padding: 11px;
   border: none;
   border-radius: 5px;
@@ -47,7 +48,7 @@
 .feedback {
   padding: 7rem 10% 7rem 5rem;
 }
-.features{
+.features {
   padding-bottom: 14rem;
 }
 .desc {

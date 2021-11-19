@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import How from "./components/How";
 import Ridehistory from "./pages/Ridehistory";
+import Support from "./pages/Support";
 import Home from "./pages/Home";
 import Book from "./pages/Book";
 import Faq from "./pages/Faq";
@@ -23,6 +24,7 @@ function App() {
           <Route path="/how" component={How} />
           <Route path="/book" component={Book} />
           <Route path="/rides" component={Ridehistory} />
+          <Route path="/support" component={Support} />
           <Route path="/faq" component={Faq} />
         </Switch>
         <Footer />

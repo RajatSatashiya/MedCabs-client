@@ -7,6 +7,9 @@
 .how-line {
   margin-left: 2rem;
   margin-right: 6rem;
+  border: none;
+  background-color: black;
+  height: 1px;
 }
 .workspanel {
   font-family: Montserrat;

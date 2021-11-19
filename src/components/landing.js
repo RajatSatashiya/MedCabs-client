@@ -10,7 +10,7 @@ function landing() {
           <h1 className="mainTitle">MED CABS</h1>
           <div>
             Feeling sick and unable to reach the clinic?? Med Cabs helps you
-            find and book medical cabsnear you.
+            find and book medical cabs near you.
           </div>
           <Link to="/book">
             <button style={{ cursor: "pointer" }}>Book A Ride</button>
