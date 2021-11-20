@@ -2,7 +2,7 @@
 import { useRef, useContext } from "react";
 // import "./Login.css";
 import { Link, useHistory } from "react-router-dom";
-// import AuthContext from "../context/authContext";
+import AuthContext from "../context/authContext";
 
 function Signup() {
   const nameInputRef = useRef(null);
@@ -10,35 +10,35 @@ function Signup() {
   const passwordInputRef = useRef(null);
   const history = useHistory();
 
-  //   const authContext = useContext(AuthContext);
+  const authContext = useContext(AuthContext);
 
-  //   const createUser = async (name, email, password) => {
-  //     try {
-  //       const response = await fetch("/signup", {
-  //         method: "POST",
-  //         body: JSON.stringify({
-  //           name,
-  //           email,
-  //           password,
-  //         }),
-  //         headers: {
-  //           "Content-type": "application/json; charset=UTF-8",
-  //         },
-  //       });
-  //       const data = await response.json();
-  //     //   authContext.login(data.token);
-  //       history.replace("/");
-  //     } catch (e) {
-  //       console.log("Error: " + e);
-  //     }
-  //   };
+  const createUser = async (name, email, password) => {
+    try {
+      const response = await fetch("/signup", {
+        method: "POST",
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+      const data = await response.json();
+      authContext.login(data.token);
+      history.replace("/");
+    } catch (e) {
+      console.log("Error: " + e);
+    }
+  };
   const submitForm = (event) => {
     event.preventDefault();
 
-    // const name = nameInputRef.current.value;
-    // const email = emailInputRef.current.value;
-    // const password = passwordInputRef.current.value;
-    // createUser(name, email, password);
+    const name = nameInputRef.current.value;
+    const email = emailInputRef.current.value;
+    const password = passwordInputRef.current.value;
+    createUser(name, email, password);
   };
   return (
     <>

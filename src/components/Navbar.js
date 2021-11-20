@@ -28,14 +28,14 @@ function Navbar() {
               </Link>
             </li>
             <li>
-              <Link to="/about" className="scroll-link">
-                ABOUT US
+              <Link to="/rides" className="scroll-link">
+                RIDE HISTORY
               </Link>
             </li>
 
             <li>
-              <Link to="/contact" className="scroll-link">
-                CONTACT US
+              <Link to="/login" className="scroll-link">
+                LOGIN
               </Link>
             </li>
           </ul>

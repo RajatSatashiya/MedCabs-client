@@ -7,7 +7,11 @@ function Supportpage() {
       <hr className="how-line"></hr>
 
       <div className="staticImg">
-        <img src="./images/shake.png" width="15%"></img>
+        <img
+          src="./images/shake.png"
+          alt="handshake illustration"
+          width="15%"
+        ></img>
         <div className="trouble">
           HAVING TROUBLE ?<br></br> WE ARE HERE TO HELP{" "}
         </div>

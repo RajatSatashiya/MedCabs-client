@@ -29,7 +29,7 @@ function Driver(props) {
           </div>
           <div className="driverLogo">
             <div className="driverImg">
-              <img src="./images/male.png"></img>
+              <img src="./images/male.png" alt="male face illustration"></img>
             </div>
             <div>{props.name}</div>
           </div>

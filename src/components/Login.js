@@ -1,44 +1,45 @@
 import { useRef, useContext } from "react";
 import "./Login.css";
 import { Link, useHistory } from "react-router-dom";
+import AuthContext from "../context/authContext";
 
 function Login() {
   const history = useHistory();
   const emailInputRef = useRef(null);
   const passwordInputRef = useRef(null);
+  const authContext = useContext(AuthContext);
 
-//   const loginUser = async (email, password) => {
-//     try {
-//       const response = await fetch("/login", {
-//         method: "POST",
-//         body: JSON.stringify({
-//           email,
-//           password,
-//         }),
-//         headers: {
-//           "Content-type": "application/json; charset=UTF-8",
-//         },
-//       });
-//       const data = await response.json();
-//       // console.log(localStorage.getItem("token"));
-//     //   authContext.login(data.token);
-//       const tokenValue = localStorage.getItem("token");
-//       if (tokenValue === "undefined") {
-//         history.replace("/login");
-//       } else {
-//         history.replace("/");
-//       }
-//     } catch (error) {
-//       console.log("Error: " + error);
-//     }
-//   };
+  const loginUser = async (email, password) => {
+    try {
+      const response = await fetch("/login", {
+        method: "POST",
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+      const data = await response.json();
+      authContext.login(data.token);
+      const tokenValue = localStorage.getItem("token");
+      if (tokenValue === "undefined") {
+        history.replace("/login");
+      } else {
+        history.replace("/");
+      }
+    } catch (error) {
+      console.log("Error: " + error);
+    }
+  };
 
   const submitForm = (event) => {
     event.preventDefault();
 
-    // const email = emailInputRef.current.value;
-    // const password = passwordInputRef.current.value;
-    // loginUser(email, password);
+    const email = emailInputRef.current.value;
+    const password = passwordInputRef.current.value;
+    loginUser(email, password);
   };
 
   return (

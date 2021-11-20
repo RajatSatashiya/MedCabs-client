@@ -15,9 +15,19 @@ function How() {
             and extracts all necessary patient information in 2 minutes.
           </div>
         </div>
-        <img src="./images/doctors.jpg" className="howimg" width="70%"></img>
+        <img
+          src="./images/doctors.jpg"
+          alt="doctor illustration"
+          className="howimg"
+          width="70%"
+        ></img>
 
-        <img src="./images/uber.jpg" className="howimg" width="40%"></img>
+        <img
+          src="./images/uber.jpg"
+          alt="uber app on mobile phone"
+          className="howimg"
+          width="40%"
+        ></img>
         <div className="worksbox">
           <h1>2.</h1>
           <h2 className="howTitle">Tech platform finds you the nearest help</h2>
@@ -39,7 +49,12 @@ function How() {
             hospital for you.
           </div>
         </div>
-        <img src="./images/hospital.jpg" className="howimg" width="70%"></img>
+        <img
+          src="./images/hospital.jpg"
+          alt="hospital illustration"
+          className="howimg"
+          width="70%"
+        ></img>
       </div>
     </>
   );

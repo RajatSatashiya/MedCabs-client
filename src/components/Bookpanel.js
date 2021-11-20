@@ -6,7 +6,11 @@ function Bookpanel() {
     <>
       <div className="bookpanel">
         <h1>Book Now</h1>
-        <img src="./images/delhimap.jpg" className="googlemapimg"></img>
+        <img
+          src="./images/delhimap.jpg"
+          className="googlemapimg"
+          alt="static map"
+        ></img>
 
         <div className="bookinput">
           <form className="bookingform">
