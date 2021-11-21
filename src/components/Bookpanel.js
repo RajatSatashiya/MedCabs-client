@@ -13,11 +13,15 @@ function Bookpanel() {
   const [rating, setRating] = useState(null);
   const [contact, setContact] = useState(null);
   const [otp, setOtp] = useState(null);
+  const [otpstatus, setOtpstatus] = useState(true);
 
   const generateOTP = async () => {
     try {
       const response = await fetch("/getDriver/otp", {
         method: "POST",
+        body: JSON.stringify({
+          mail: MailInputRef.current.value,
+        }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },
@@ -51,11 +55,13 @@ function Bookpanel() {
   const submitForm = (event) => {
     event.preventDefault();
 
-    // const time = timeInputRef.current.value;
-    // const mobile = MobileInputRef.current.value;
-    // const otp = OTPInputRef.current.value;
-
-    findDriver();
+    const otpVal = OTPInputRef.current.value;
+    if (otp == otpVal) {
+      setOtpstatus(true);
+      findDriver();
+    } else {
+      setOtpstatus(false);
+    }
   };
   return (
     <>
@@ -75,7 +81,12 @@ function Bookpanel() {
               <br></br>
 
               <label>Email: </label>
-              <input type="text" ref={MailInputRef} required></input>
+              <input
+                type="text"
+                name="email"
+                ref={MailInputRef}
+                required
+              ></input>
               <br></br>
 
               <label>OTP: </label>
@@ -91,6 +102,9 @@ function Bookpanel() {
               </button>
             </div>
           </form>
+          <div className={otpstatus ? "correct" : "incorrect"}>
+            OTP Incorrect!!
+          </div>
         </div>
       </div>
       <Driver

@@ -38,3 +38,11 @@
   flex-direction: column;
   justify-content: space-evenly;
 }
+.correct {
+  display: none;
+}
+.incorrect {
+  font-weight: bold;
+  color: red;
+  text-align: center;
+}
