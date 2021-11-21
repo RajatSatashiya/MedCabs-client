@@ -12,7 +12,6 @@
   width: 50%;
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
 }
 .bookingleft {
   text-align: right;
@@ -25,10 +24,17 @@
 }
 .bookBtn {
   font-family: Montserrat;
-  font-weight: 500;
+  font-weight: bold;
   font-size: 1rem;
   text-transform: capitalize;
   background: #c4c4c4;
   border: none;
   padding: 7px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.btnPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
