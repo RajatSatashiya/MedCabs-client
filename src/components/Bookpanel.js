@@ -12,6 +12,22 @@ function Bookpanel() {
   const [rides, setRides] = useState(null);
   const [rating, setRating] = useState(null);
   const [contact, setContact] = useState(null);
+  const [otp, setOtp] = useState(null);
+
+  const generateOTP = async () => {
+    try {
+      const response = await fetch("/getDriver/otp", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+      const data = await response.json();
+      setOtp(data);
+    } catch (e) {
+      console.log("Error: " + e);
+    }
+  };
 
   const findDriver = async () => {
     try {
@@ -67,7 +83,9 @@ function Bookpanel() {
               <br></br>
             </div>
             <div className="btnPanel">
-              <button className="bookBtn">Generate OTP</button>
+              <button className="bookBtn" onClick={generateOTP}>
+                Generate OTP
+              </button>
               <button className="bookBtn" type="submit">
                 book ride
               </button>
