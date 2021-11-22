@@ -101,30 +101,39 @@ function Bookpanel() {
       setRides(data["driver"][0]["rides"]);
       setRating(data["driver"][0]["rating"]["$numberDecimal"]);
       setContact(data["driver"][0]["contact"]);
+
+      saveRide();
     } catch (error) {
       console.log("Error: " + error);
     }
   };
 
-  //save ride info -> fetch request
-  // const saveRide = async () => {
-  //   try {
-  //     const response = await fetch("/saveRide", {
-  //       method: "POST",
-  //       body: JSON.stringify({
-  //         price: fare,
-  //         destination: LocationInputRef.current.value,
-  //         driver: name,
-  //       }),
-  //       headers: {
-  //         "Content-type": "application/json; charset=UTF-8",
-  //         Authorization: "Bearer " + authContext.token,
-  //       },
-  //     });
-  //   } catch (error) {
-  //     console.log("error: " + error);
-  //   }
-  // };
+  // save ride info -> fetch request
+  const saveRide = async () => {
+    const d = new Date();
+    const year = d.getFullYear();
+    const month = d.getMonth();
+    const day = d.getDate();
+    const date = day + "/" + month + "/" + year;
+
+    try {
+      const response = await fetch("/rides/save", {
+        method: "POST",
+        body: JSON.stringify({
+          date,
+          price: fare,
+          destination: LocationInputRef.current.value,
+          driver: name,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          Authorization: "Bearer " + authContext.token,
+        },
+      });
+    } catch (error) {
+      console.log("error: " + error);
+    }
+  };
 
   const submitForm = (event) => {
     event.preventDefault();
