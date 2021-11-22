@@ -1,6 +1,10 @@
+import { useEffect } from "react";
 import "./Support.css";
 
 function Support() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <div className="supportChat">

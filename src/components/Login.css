@@ -57,11 +57,13 @@ label {
   font-family: Montserrat;
   font-weight: 500;
   background: #c63848;
+  background: #526f9e;
   color: black;
   margin: 10px 0px;
 }
 .link {
   color: #c63848;
+  color: #526f9e;
   text-decoration: underline;
   font-size: 14px;
   font-weight: bold;

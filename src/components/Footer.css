@@ -8,6 +8,7 @@ footer {
   font-size: 1.4rem;
   list-style-type: none;
   text-align: left;
+  margin-left: 10px;
 }
 .icons {
   margin: auto;
@@ -16,6 +17,9 @@ footer {
   justify-content: space-evenly;
   font-size: 3rem;
   width: 75%;
+}
+a {
+  color: black;
 }
 .icons i {
   margin: 0.4rem;

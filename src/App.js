@@ -20,6 +20,7 @@ import Faq from "./pages/Faq";
 
 function App() {
   const authContext = useContext(AuthContext);
+ 
   return (
     <>
       <Router>

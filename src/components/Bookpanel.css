@@ -46,3 +46,11 @@
   color: red;
   text-align: center;
 }
+.map-container {
+  width: 40%;
+  height: 50vh;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  /* aspect-ratio: 1; */
+}

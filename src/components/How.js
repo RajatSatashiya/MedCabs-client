@@ -1,6 +1,10 @@
+import { useEffect } from "react";
 import "./How.css";
 
 function How() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <h1 className="howhead">How it works</h1>

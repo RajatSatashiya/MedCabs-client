@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Faq.css";
 
 function Faq() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [active, setActive] = useState(false);
   const dispAns = (id) => {
     //TODO -> imrpove the below code and use the useState.
-    if (id.target.nextSibling.style.display == "block") {
+    if (id.target.nextSibling.style.display === "block") {
       id.target.nextSibling.style.display = "none";
     } else {
       id.target.nextSibling.style.display = "block";

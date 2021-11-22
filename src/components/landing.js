@@ -1,8 +1,12 @@
+import { useEffect } from "react";
 import "./landing.css";
 import Reviews from "./reviews";
 import { Link } from "react-router-dom";
 
-function landing() {
+function Landing() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <div className="landing">
@@ -78,4 +82,4 @@ function landing() {
     </>
   );
 }
-export default landing;
+export default Landing;

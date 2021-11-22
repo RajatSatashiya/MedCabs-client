@@ -1,9 +1,36 @@
 import "./Footer.css";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../context/authContext";
 
 function Footer() {
+  const authContext = useContext(AuthContext);
+  const logout = () => {
+    window.scrollTo(0, 0);
+    authContext.logout();
+  };
   return (
     <>
       <footer>
+        <div className="cities">
+          <h1 className="topic">Also visit</h1>
+          <div className="">
+            <ul>
+              <Link to="/faq">
+                <li>FAQ</li>
+              </Link>
+              <Link to="/how">
+                <li>How It Works</li>
+              </Link>
+              <Link to="/support">
+                <li>Customer Support</li>
+              </Link>
+              <Link to="/">
+                <li onClick={logout}>Log Out</li>
+              </Link>
+            </ul>
+          </div>
+        </div>
         <div className="cities">
           <h1 className="topic">our cities</h1>
           <ul>

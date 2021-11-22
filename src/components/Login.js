@@ -71,7 +71,7 @@ function Login() {
           <input
             type="password"
             name="password"
-            placeholder="Enter 6 characters or more"
+            placeholder="Enter 5 characters or more"
             required
             ref={passwordInputRef}
           ></input>
