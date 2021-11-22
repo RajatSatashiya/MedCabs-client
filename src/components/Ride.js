@@ -22,10 +22,9 @@ function Ride() {
           <div className="ridespic"></div>
           <div className="hospdetails">
             <div className="address">
-              To Apollo Hospital, GIDC Road, Ahmedabad, 38428 
-              <br></br>Driver: Amit Jha
+              To Apollo Hospital, GIDC Road, Ahmedabad, 38428
             </div>
-            <div className="ridername">Ride To: Shalini Shah</div>
+            <div className="ridername">Driver: Amit Jha</div>
           </div>
           <div className="rideBtns">
             <button>Write a review</button>

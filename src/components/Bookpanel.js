@@ -1,10 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
 import "./Bookpanel.css";
 import mapboxgl from "mapbox-gl";
-import turf, { point, distance } from "@turf/turf";
+import { point, distance } from "@turf/turf";
 import Driver from "./Driver";
+import AuthContext from "../context/authContext";
 
 function Bookpanel() {
+  const authContext = useContext(AuthContext);
   mapboxgl.accessToken =
     "pk.eyJ1IjoicmFqYXRzYXRhc2hpeWEiLCJhIjoiY2t3YWU4NmQyMGk4NzJ1cWxjeDZ3N2wwbyJ9.hsNrw5963B5Zs2yOj5wepA";
 
@@ -14,6 +16,7 @@ function Bookpanel() {
   const [lng, setLng] = useState(77.283508);
   const [lat, setLat] = useState(28.541229);
   const [zoom, setZoom] = useState(10);
+  const [fare, setFare] = useState(0);
 
   //form inputs
   const timeInputRef = useRef(null);
@@ -45,7 +48,8 @@ function Bookpanel() {
   const getDistance = (latitude, longitude) => {
     var from = point([latitude, longitude]);
     var to = point([lat, lng]);
-    var dist = distance(from, to, { units: "kilometers" });
+    var totalDist = distance(from, to, { units: "kilometers" });
+    setFare(Math.floor(totalDist) * 14);
   };
 
   //get current user location
@@ -58,7 +62,7 @@ function Bookpanel() {
     });
   };
 
-  //get otp
+  //get otp -> fetch request
   const generateOTP = async () => {
     try {
       const response = await fetch("/getDriver/otp", {
@@ -77,6 +81,7 @@ function Bookpanel() {
     }
   };
 
+  //get driver -> fetch request
   const findDriver = async () => {
     try {
       const response = await fetch("/getDriver", {
@@ -100,6 +105,26 @@ function Bookpanel() {
       console.log("Error: " + error);
     }
   };
+
+  //save ride info -> fetch request
+  // const saveRide = async () => {
+  //   try {
+  //     const response = await fetch("/saveRide", {
+  //       method: "POST",
+  //       body: JSON.stringify({
+  //         price: fare,
+  //         destination: LocationInputRef.current.value,
+  //         driver: name,
+  //       }),
+  //       headers: {
+  //         "Content-type": "application/json; charset=UTF-8",
+  //         Authorization: "Bearer " + authContext.token,
+  //       },
+  //     });
+  //   } catch (error) {
+  //     console.log("error: " + error);
+  //   }
+  // };
 
   const submitForm = (event) => {
     event.preventDefault();
@@ -157,6 +182,7 @@ function Bookpanel() {
       </div>
       <Driver
         // name={name}
+        fare={fare}
         name={name}
         gender={gender}
         rides={rides}

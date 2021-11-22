@@ -8,6 +8,13 @@ function Driver(props) {
 
         <div className="driverData">
           <div className="driverdesc">
+            <span className="dtitle">Total Fare: ₹</span>
+            <b>
+              <span>{props.fare}</span>
+            </b>
+            <br></br>
+            <br></br>
+
             <span className="dtitle">Driver Name: </span>
             <span>{props.name}</span>
             <br></br>
