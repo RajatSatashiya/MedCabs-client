@@ -2,11 +2,13 @@ import { useRef, useContext } from "react";
 import "./Login.css";
 import { Link, useHistory } from "react-router-dom";
 import AuthContext from "../context/authContext";
+import UserContext from "../context/userContext";
 
 function Login() {
   const history = useHistory();
   const emailInputRef = useRef(null);
   const passwordInputRef = useRef(null);
+  const userContext = useContext(UserContext);
   const authContext = useContext(AuthContext);
 
   const loginUser = async (email, password) => {
@@ -23,6 +25,8 @@ function Login() {
       });
       const data = await response.json();
       authContext.login(data.token);
+      userContext.writeEmail(email);
+
       const tokenValue = localStorage.getItem("token");
       if (tokenValue === "undefined") {
         history.replace("/login");

@@ -3,6 +3,7 @@ import { useRef, useContext } from "react";
 // import "./Login.css";
 import { Link, useHistory } from "react-router-dom";
 import AuthContext from "../context/authContext";
+import UserContext from "../context/userContext";
 
 function Signup() {
   const nameInputRef = useRef(null);
@@ -11,6 +12,7 @@ function Signup() {
   const history = useHistory();
 
   const authContext = useContext(AuthContext);
+  const userContext = useContext(UserContext);
 
   const createUser = async (name, email, password) => {
     try {
@@ -27,6 +29,8 @@ function Signup() {
       });
       const data = await response.json();
       authContext.login(data.token);
+      userContext.writeEmail(email);
+
       history.replace("/");
     } catch (e) {
       console.log("Error: " + e);

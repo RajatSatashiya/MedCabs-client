@@ -4,9 +4,12 @@ import mapboxgl from "mapbox-gl";
 import { point, distance } from "@turf/turf";
 import Driver from "./Driver";
 import AuthContext from "../context/authContext";
+import UserContext from "../context/userContext";
 
 function Bookpanel() {
   const authContext = useContext(AuthContext);
+  const userContext = useContext(UserContext);
+
   mapboxgl.accessToken =
     "pk.eyJ1IjoicmFqYXRzYXRhc2hpeWEiLCJhIjoiY2t3YWU4NmQyMGk4NzJ1cWxjeDZ3N2wwbyJ9.hsNrw5963B5Zs2yOj5wepA";
 
@@ -164,11 +167,21 @@ function Bookpanel() {
               <br></br>
 
               <label>Location: </label>
-              <input type="text" ref={LocationInputRef} required></input>
+              <input
+                type="text"
+                ref={LocationInputRef}
+                defaultValue={userContext.location}
+                required
+              ></input>
               <br></br>
 
               <label>Email: </label>
-              <input type="text" ref={MailInputRef} required></input>
+              <input
+                type="text"
+                ref={MailInputRef}
+                defaultValue={userContext.email}
+                required
+              ></input>
               <br></br>
 
               <label>OTP: </label>

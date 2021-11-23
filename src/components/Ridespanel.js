@@ -1,4 +1,13 @@
+import { useContext } from "react";
+import UserContext from "../context/userContext";
+import { Link } from "react-router-dom";
+
 function Ridespanel(props) {
+  const userContext = useContext(UserContext);
+  const changeLocation = () => {
+    userContext.writeLocation(props.destination);
+  };
+
   return (
     <>
       <div className="ridePanel" key={props.index}>
@@ -29,8 +38,14 @@ function Ridespanel(props) {
             <button>Write a review</button>
             <button>Driver Feedback</button>
             <button>Invoice</button>
-            <button>Book Again</button>
-            <button>Talk to Support</button>
+            <button>
+              <Link to="/book" onClick={changeLocation}>
+                Book Again
+              </Link>
+            </button>
+            <button>
+              <Link to="/support">Talk to Support</Link>
+            </button>
           </div>
         </div>
       </div>

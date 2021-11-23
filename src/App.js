@@ -7,11 +7,13 @@ import {
   Redirect,
 } from "react-router-dom";
 import AuthContext from "./context/authContext";
+
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import How from "./components/How";
+
 import Ridehistory from "./pages/Ridehistory";
 import Support from "./pages/Support";
 import Home from "./pages/Home";
@@ -20,7 +22,7 @@ import Faq from "./pages/Faq";
 
 function App() {
   const authContext = useContext(AuthContext);
- 
+
   return (
     <>
       <Router>

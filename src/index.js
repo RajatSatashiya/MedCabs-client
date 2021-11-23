@@ -4,10 +4,13 @@ import "./index.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 import App from "./App";
 import { AuthContextProvider } from "./context/authContext";
+import { UserContextProvider } from "./context/userContext";
 
 ReactDOM.render(
   <AuthContextProvider>
-    <App />
+    <UserContextProvider>
+      <App />
+    </UserContextProvider>
   </AuthContextProvider>,
   document.getElementById("root")
 );
