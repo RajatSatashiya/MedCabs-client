@@ -9,9 +9,9 @@ function Support() {
     <>
       <div className="supportChat">
         <div className="supportUp">Send us a message</div>
-        <div className="messages">random msg but a long one baby</div>
-        <div className="messages">random msg</div>
-        <div className="messages">random msg</div>
+        <div className="messages">random msg#1</div>
+        <div className="messages">random msg#2</div>
+        <div className="messages">random msg#3 in the longer forma</div>
         <div className="supportDown">
           <input
             type="text"

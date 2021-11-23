@@ -1,14 +1,11 @@
 import { useState, useEffect, useContext } from "react";
 import "./Ride.css";
 import AuthContext from "../context/authContext";
+import Ridespanel from "./Ridespanel";
 
 function Ride() {
   const authContext = useContext(AuthContext);
-
-  const [date, setDate] = useState(null);
-  const [fare, setFare] = useState(null);
-  const [destination, setDestination] = useState(null);
-  const [driver, setDriver] = useState(null);
+  const [rides, setRides] = useState(null);
 
   const rideHistory = async () => {
     try {
@@ -20,13 +17,24 @@ function Ride() {
         },
       });
       const data = await response.json();
-      console.log(data);
-      setDate(data["rideHistory"][0]["date"]);
-      setFare(data["rideHistory"][0]["price"]["$numberDecimal"]);
-      setDestination(data["rideHistory"][0]["destination"]);
-      setDriver(data["rideHistory"][0]["driver"]);
+      setRides(data);
     } catch (e) {
       console.log("Error: " + e);
+    }
+  };
+
+  //get all rides and load the component
+  var loadRides = () => {
+    if (rides != null) {
+      return rides["rideHistory"].map((ride, index) => (
+        <Ridespanel
+          key={index}
+          date={ride["date"]}
+          fare={ride["price"]["$numberDecimal"]}
+          destination={ride["destination"]}
+          driver={ride["driver"]}
+        />
+      ));
     }
   };
 
@@ -35,39 +43,7 @@ function Ride() {
   }, []);
   return (
     <>
-      <div className="ridePanel">
-        <div className="rideupper">
-          <div className="rideleft">
-            <div>
-              <h4>Ride Date: </h4>
-              <span>{date}</span>
-            </div>
-
-            <div>
-              <h4>Total: </h4>
-              <span>₹ {fare}</span>
-            </div>
-          </div>
-          <h4 className="rideright">View Ride details</h4>
-        </div>
-        <div className="ridebelow">
-          <div className="ridespic"></div>
-          <div className="hospdetails">
-            <div className="address">
-              To <br></br>
-              {destination}
-            </div>
-            <div className="ridername">Driver: {driver}</div>
-          </div>
-          <div className="rideBtns">
-            <button>Write a review</button>
-            <button>Driver Feedback</button>
-            <button>Invoice</button>
-            <button>Book Again</button>
-            <button>Talk to Support</button>
-          </div>
-        </div>
-      </div>
+      <div>{loadRides()}</div>
     </>
   );
 }
