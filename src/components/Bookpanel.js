@@ -105,7 +105,9 @@ function Bookpanel() {
       setRating(data["driver"][0]["rating"]["$numberDecimal"]);
       setContact(data["driver"][0]["contact"]);
 
-      saveRide();
+      if (fare != 0 && fare < 3000) {
+        saveRide();
+      }
     } catch (error) {
       console.log("Error: " + error);
     }
@@ -115,7 +117,7 @@ function Bookpanel() {
   const saveRide = async () => {
     const d = new Date();
     const year = d.getFullYear();
-    const month = d.getMonth();
+    const month = d.getMonth() + 1;
     const day = d.getDate();
     const date = day + "/" + month + "/" + year;
 
@@ -133,6 +135,7 @@ function Bookpanel() {
           Authorization: "Bearer " + authContext.token,
         },
       });
+      const data = await response.json();
     } catch (error) {
       console.log("error: " + error);
     }

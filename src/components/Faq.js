@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { envelope } from "@turf/turf";
+import { useState, useEffect, useRef } from "react";
 import "./Faq.css";
 
 function Faq() {
@@ -6,6 +7,8 @@ function Faq() {
     window.scrollTo(0, 0);
   }, []);
   const [active, setActive] = useState(false);
+  const faqDescriptionInputRef = useRef(null);
+
   const dispAns = (id) => {
     //TODO -> imrpove the below code and use the useState.
     if (id.target.nextSibling.style.display === "block") {
@@ -14,6 +17,30 @@ function Faq() {
       id.target.nextSibling.style.display = "block";
     }
     // setActive(!active);
+  };
+
+  const sendFaq = async (faq) => {
+    try {
+      const response = await fetch("/faq", {
+        method: "POST",
+        body: JSON.stringify({
+          question: faq,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+      const data = await response.json();
+    } catch (e) {
+      console.log("Error: " + e);
+    }
+  };
+
+  const submitForm = (event) => {
+    event.preventDefault();
+    const faq = faqDescriptionInputRef.current.value;
+    sendFaq(faq);
+    faqDescriptionInputRef.current.value = "";
   };
   return (
     <>
@@ -114,11 +141,12 @@ function Faq() {
       <div className="feedback subhead">
         <h1 className="topic">Ask a question</h1>
         <div className="desc2">Our experts will answer your queries.</div>
-        <form>
+        <form onSubmit={submitForm}>
           <textarea
             type="text"
             className="userQue"
             placeholder="Ask your question here"
+            ref={faqDescriptionInputRef}
           ></textarea>
           <br></br>
           <button type="submit" className="feedbackBtn">

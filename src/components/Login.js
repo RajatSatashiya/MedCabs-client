@@ -1,4 +1,4 @@
-import { useRef, useContext } from "react";
+import { useState, useRef, useContext } from "react";
 import "./Login.css";
 import { Link, useHistory } from "react-router-dom";
 import AuthContext from "../context/authContext";
@@ -10,6 +10,8 @@ function Login() {
   const passwordInputRef = useRef(null);
   const userContext = useContext(UserContext);
   const authContext = useContext(AuthContext);
+
+  const [error, setError] = useState("");
 
   const loginUser = async (email, password) => {
     try {
@@ -24,6 +26,7 @@ function Login() {
         },
       });
       const data = await response.json();
+      data.message && setError(data.message);
       authContext.login(data.token);
       userContext.writeEmail(email);
 
@@ -86,6 +89,7 @@ function Login() {
           </label>
           <br></br>
 
+          <div className={error == "" ? "" : "errorMessage"}>{error}</div>
           <button className="btn" type="submit">
             LOGIN
           </button>

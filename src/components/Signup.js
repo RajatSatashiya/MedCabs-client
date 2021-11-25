@@ -1,5 +1,5 @@
 // import React from "react";
-import { useRef, useContext } from "react";
+import { useState, useRef, useContext } from "react";
 // import "./Login.css";
 import { Link, useHistory } from "react-router-dom";
 import AuthContext from "../context/authContext";
@@ -13,6 +13,7 @@ function Signup() {
 
   const authContext = useContext(AuthContext);
   const userContext = useContext(UserContext);
+  const [error, setError] = useState("");
 
   const createUser = async (name, email, password) => {
     try {
@@ -28,10 +29,17 @@ function Signup() {
         },
       });
       const data = await response.json();
+      console.log(data.message);
+      data.message && setError(data.message);
       authContext.login(data.token);
       userContext.writeEmail(email);
 
-      history.replace("/");
+      const tokenValue = localStorage.getItem("token");
+      if (tokenValue === "undefined") {
+        history.replace("/signup");
+      } else {
+        history.replace("/");
+      }
     } catch (e) {
       console.log("Error: " + e);
     }
@@ -95,6 +103,7 @@ function Signup() {
           </label>
           <br></br>
 
+          <div className={error == "" ? "" : "errorMessage"}>{error}</div>
           <button className="btn" type="submit">
             Register
           </button>

@@ -3,7 +3,6 @@ body {
 }
 main {
   margin: 4rem;
-  margin: auto;
 }
 .faq-heading {
   font-family: Montserrat;
@@ -60,4 +59,5 @@ main {
   padding: 11px;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
 }

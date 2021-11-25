@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import "./landing.css";
 import Reviews from "./reviews";
 import { Link } from "react-router-dom";
@@ -7,6 +7,31 @@ function Landing() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const faqDescriptionInputRef = useRef(null);
+  const sendFaq = async (faq) => {
+    try {
+      const response = await fetch("/faq", {
+        method: "POST",
+        body: JSON.stringify({
+          question: faq,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+      const data = await response.json();
+    } catch (e) {
+      console.log("Error: " + e);
+    }
+  };
+
+  const askQuestion = (event) => {
+    event.preventDefault();
+    const faq = faqDescriptionInputRef.current.value;
+    sendFaq(faq);
+    faqDescriptionInputRef.current.value = "";
+  };
   return (
     <>
       <div className="landing">
@@ -62,8 +87,18 @@ function Landing() {
         <textarea
           type="text"
           className="userQue"
-          placeholder="Ask your question here"
+          placeholder="Share your suggestions and feedback here..."
         ></textarea>
+        <div>
+          <button
+            type="submit"
+            className="feedbackBtn"
+            ref={faqDescriptionInputRef}
+            onClick={askQuestion}
+          >
+            Submit
+          </button>
+        </div>
         <div className="reviews">
           <Reviews
             author="Shalini H."
