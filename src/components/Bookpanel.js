@@ -45,7 +45,7 @@ function Bookpanel() {
       center: [lng, lat],
       zoom: zoom,
     });
-  }, [lng, lat]);
+  }, [lng, lat, zoom]);
 
   //calculate distance
   const getDistance = (latitude, longitude) => {
