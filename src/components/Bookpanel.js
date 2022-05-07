@@ -68,15 +68,18 @@ function Bookpanel() {
   //get otp -> fetch request
   const generateOTP = async () => {
     try {
-      const response = await fetch("/getDriver/otp", {
-        method: "POST",
-        body: JSON.stringify({
-          mail: MailInputRef.current.value,
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      });
+      const response = await fetch(
+        "https://medcabs.herokuapp.com/getDriver/otp",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            mail: MailInputRef.current.value,
+          }),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        }
+      );
       const data = await response.json();
       setOtp(data);
     } catch (e) {
@@ -87,7 +90,7 @@ function Bookpanel() {
   //get driver -> fetch request
   const findDriver = async () => {
     try {
-      const response = await fetch("/getDriver", {
+      const response = await fetch("https://medcabs.herokuapp.com/getDriver", {
         method: "POST",
         body: JSON.stringify({
           location: LocationInputRef.current.value,
@@ -122,7 +125,7 @@ function Bookpanel() {
     const date = day + "/" + month + "/" + year;
 
     try {
-      const response = await fetch("/rides/save", {
+      const response = await fetch("https://medcabs.herokuapp.com/rides/save", {
         method: "POST",
         body: JSON.stringify({
           date,

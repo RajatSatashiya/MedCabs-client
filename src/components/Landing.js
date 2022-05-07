@@ -11,7 +11,7 @@ function Landing() {
   const faqDescriptionInputRef = useRef(null);
   const sendFaq = async (faq) => {
     try {
-      const response = await fetch("/faq", {
+      const response = await fetch("https://medcabs.herokuapp.com/faq", {
         method: "POST",
         body: JSON.stringify({
           question: faq,
