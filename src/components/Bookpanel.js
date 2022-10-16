@@ -16,8 +16,8 @@ function Bookpanel() {
   //map and destination
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [lng, setLng] = useState(77.283508);
-  const [lat, setLat] = useState(28.541229);
+  const [lng, setLng] = useState(72.585022);
+  const [lat, setLat] = useState(23.033863);
   const [zoom, setZoom] = useState(10);
   const [fare, setFare] = useState(0);
 
@@ -45,20 +45,21 @@ function Bookpanel() {
       center: [lng, lat],
       zoom: zoom,
     });
-  }, [lng, lat, zoom]);
+    // setFare(fare);
+    getUserLocation();
+  }, [lng, lat, zoom, fare]);
 
   //calculate distance
   const getDistance = (latitude, longitude) => {
     var from = point([latitude, longitude]);
     var to = point([lat, lng]);
     var totalDist = distance(from, to, { units: "kilometers" });
-    var fareval = Math.floor(totalDist) * 14;
-    setFare(fareval);
+    setFare(Math.floor(totalDist * 14));
   };
 
   //get current user location
   const getUserLocation = () => {
-    var latitude, longitude, fareval;
+    var latitude, longitude;
     navigator.geolocation.getCurrentPosition((position) => {
       latitude = position.coords.latitude;
       longitude = position.coords.longitude;
@@ -105,6 +106,7 @@ function Bookpanel() {
       setRides(data["driver"][0]["rides"]);
       setRating(data["driver"][0]["rating"]["$numberDecimal"]);
       setContact(data["driver"][0]["contact"]);
+      // setFare(fare);
 
       if (fare !== 0 && fare < 3000) {
         saveRide();
@@ -144,16 +146,17 @@ function Bookpanel() {
   const submitForm = (event) => {
     event.preventDefault();
     setZoom(17);
-    var fareval = getUserLocation();
+    getUserLocation();
 
-    const otpVal = OTPInputRef.current.value;
-    if (otp == otpVal) {
-      setOtpstatus(true);
-      setFare(fareval);
-      findDriver();
-    } else {
-      setOtpstatus(false);
-    }
+    setTimeout(() => {
+      const otpVal = OTPInputRef.current.value;
+      if (otp == otpVal) {
+        setOtpstatus(true);
+        findDriver();
+      } else {
+        setOtpstatus(false);
+      }
+    }, 2000);
   };
 
   return (
