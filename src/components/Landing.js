@@ -11,7 +11,7 @@ function Landing() {
   const faqDescriptionInputRef = useRef(null);
   const sendFaq = async (faq) => {
     try {
-      const response = await fetch("https://medcabs.herokuapp.com/faq", {
+      await fetch("/faq", {
         method: "POST",
         body: JSON.stringify({
           question: faq,
@@ -20,7 +20,7 @@ function Landing() {
           "Content-type": "application/json; charset=UTF-8",
         },
       });
-      const data = await response.json();
+      // const data = await response.json();
     } catch (e) {
       console.log("Error: " + e);
     }
@@ -56,12 +56,11 @@ function Landing() {
 
       <div className="why subhead">
         <h1 className="topic">Why med cabs?</h1>
-        <div className="desc">
-          India's first, GPS based technology platform for fast and reliable
-          first point medical attention.<br></br> With an increasing emphasis on
-          promoting independent living today, having access to the nearest
-          ambulance to you can provide much needed peace of mind in a worst case
-          scenario.
+        <div className="desc descwhy">
+          We will answer this question by asking you another question, would you
+          call an ambulance for common cold? <br></br> No right, we have brought
+          you with med cabs where you can book medical cabs with ease right away
+          from your mobile.
         </div>
         <img
           className="cabimg"
@@ -73,11 +72,12 @@ function Landing() {
       <div className="features subhead">
         <h1 className="topic">Features</h1>
         <div className="desc">
-          India's first, GPS based technology platform for fast and reliable
-          first point medical attention. <br></br>With an increasing emphasis on
-          promoting independent living today, having access to the nearest
-          ambulance to you can provide much needed peace of mind in a worst case
-          scenario.
+          There are several features available for the user to interact with the
+          website. <br></br> You can book rides, check ride history and re-book
+          a ride, check rider details, provide feedback to developers. One can
+          even talk to support staff in case of any issues. A user can use our
+          mapbox api to choose a location and perform otp-verification thus
+          maintaining the security of every rides booked.
         </div>
       </div>
 
@@ -88,14 +88,10 @@ function Landing() {
           type="text"
           className="userQue"
           placeholder="Share your suggestions and feedback here..."
+          ref={faqDescriptionInputRef}
         ></textarea>
         <div>
-          <button
-            type="submit"
-            className="feedbackBtn"
-            ref={faqDescriptionInputRef}
-            onClick={askQuestion}
-          >
+          <button type="submit" className="feedbackBtn" onClick={askQuestion}>
             Submit
           </button>
         </div>

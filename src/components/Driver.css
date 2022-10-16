@@ -2,12 +2,14 @@
   font-family: Montserrat;
   background: #ececec;
   padding: 5rem;
+  padding: 5%;
 }
 .driverData {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 1.8rem;
+  /* background: pink; */
 }
 .driverdesc {
   margin-bottom: 3rem;
@@ -20,4 +22,11 @@
 }
 .driverImg img {
   width: 20rem;
+}
+
+/* ******* RESPONSIVE - MOBILE ******* */
+@media screen and (max-width: 500px) {
+  .driverImg img {
+    display: none;
+  }
 }

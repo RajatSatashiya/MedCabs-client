@@ -43,6 +43,8 @@
 .why,
 .feedback {
   background: #ececec;
+  padding: 5rem 0 7rem 5rem;
+  padding-right: 30%;
 }
 .features,
 .feedback {
@@ -65,6 +67,8 @@
   position: absolute;
   bottom: -10%;
   right: 35px;
+  opacity: 0.7;
+  width: 25rem;
 }
 .desc2 {
   font-family: Montserrat;
@@ -87,4 +91,14 @@
 }
 .reviews {
   display: flex;
+}
+
+/* ******* RESPONSIVE - MOBILE ******* */
+@media screen and (max-width: 700px) {
+  .cabimg {
+    display: none;
+  }
+  .why {
+    padding-right: 5rem;
+  }
 }

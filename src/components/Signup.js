@@ -17,7 +17,7 @@ function Signup() {
 
   const createUser = async (name, email, password) => {
     try {
-      const response = await fetch("https://medcabs.herokuapp.com/signup", {
+      const response = await fetch("/signup", {
         method: "POST",
         body: JSON.stringify({
           name,
@@ -103,7 +103,7 @@ function Signup() {
           </label>
           <br></br>
 
-          <div className={error == "" ? "" : "errorMessage"}>{error}</div>
+          <div className={error === "" ? "" : "errorMessage"}>{error}</div>
           <button className="btn" type="submit">
             Register
           </button>

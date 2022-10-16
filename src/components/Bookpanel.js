@@ -52,12 +52,13 @@ function Bookpanel() {
     var from = point([latitude, longitude]);
     var to = point([lat, lng]);
     var totalDist = distance(from, to, { units: "kilometers" });
-    setFare(Math.floor(totalDist) * 14);
+    var fareval = Math.floor(totalDist) * 14;
+    setFare(fareval);
   };
 
   //get current user location
   const getUserLocation = () => {
-    var latitude, longitude;
+    var latitude, longitude, fareval;
     navigator.geolocation.getCurrentPosition((position) => {
       latitude = position.coords.latitude;
       longitude = position.coords.longitude;
@@ -68,18 +69,15 @@ function Bookpanel() {
   //get otp -> fetch request
   const generateOTP = async () => {
     try {
-      const response = await fetch(
-        "https://medcabs.herokuapp.com/getDriver/otp",
-        {
-          method: "POST",
-          body: JSON.stringify({
-            mail: MailInputRef.current.value,
-          }),
-          headers: {
-            "Content-type": "application/json; charset=UTF-8",
-          },
-        }
-      );
+      const response = await fetch("/getDriver/otp", {
+        method: "POST",
+        body: JSON.stringify({
+          mail: MailInputRef.current.value,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
       const data = await response.json();
       setOtp(data);
     } catch (e) {
@@ -90,7 +88,7 @@ function Bookpanel() {
   //get driver -> fetch request
   const findDriver = async () => {
     try {
-      const response = await fetch("https://medcabs.herokuapp.com/getDriver", {
+      const response = await fetch("/getDriver", {
         method: "POST",
         body: JSON.stringify({
           location: LocationInputRef.current.value,
@@ -108,7 +106,7 @@ function Bookpanel() {
       setRating(data["driver"][0]["rating"]["$numberDecimal"]);
       setContact(data["driver"][0]["contact"]);
 
-      if (fare != 0 && fare < 3000) {
+      if (fare !== 0 && fare < 3000) {
         saveRide();
       }
     } catch (error) {
@@ -125,7 +123,7 @@ function Bookpanel() {
     const date = day + "/" + month + "/" + year;
 
     try {
-      const response = await fetch("https://medcabs.herokuapp.com/rides/save", {
+      await fetch("/rides/save", {
         method: "POST",
         body: JSON.stringify({
           date,
@@ -138,7 +136,6 @@ function Bookpanel() {
           Authorization: "Bearer " + authContext.token,
         },
       });
-      const data = await response.json();
     } catch (error) {
       console.log("error: " + error);
     }
@@ -147,11 +144,12 @@ function Bookpanel() {
   const submitForm = (event) => {
     event.preventDefault();
     setZoom(17);
-    getUserLocation();
+    var fareval = getUserLocation();
 
     const otpVal = OTPInputRef.current.value;
     if (otp == otpVal) {
       setOtpstatus(true);
+      setFare(fareval);
       findDriver();
     } else {
       setOtpstatus(false);

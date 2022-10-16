@@ -1,4 +1,3 @@
-import { envelope } from "@turf/turf";
 import { useState, useEffect, useRef } from "react";
 import "./Faq.css";
 
@@ -21,7 +20,7 @@ function Faq() {
 
   const sendFaq = async (faq) => {
     try {
-      const response = await fetch("https://medcabs.herokuapp.com/faq", {
+      await fetch("/faq", {
         method: "POST",
         body: JSON.stringify({
           question: faq,
@@ -30,7 +29,7 @@ function Faq() {
           "Content-type": "application/json; charset=UTF-8",
         },
       });
-      const data = await response.json();
+      // const data = await response.json();
     } catch (e) {
       console.log("Error: " + e);
     }

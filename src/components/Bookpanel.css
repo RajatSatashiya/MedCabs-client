@@ -1,7 +1,7 @@
 .bookpanel {
   font-family: Montserrat;
   margin: 3% 0;
-  width: 100%;
+  /* width: 100%; */
   text-align: center;
 }
 .googlemapimg {
@@ -9,7 +9,8 @@
 }
 .bookingform {
   margin: auto;
-  width: 50%;
+  max-width: 40rem;
+  width: 80%;
   display: flex;
   justify-content: space-evenly;
 }
@@ -47,10 +48,11 @@
   text-align: center;
 }
 .map-container {
-  width: 40%;
-  height: 50vh;
-  margin: auto;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  /* aspect-ratio: 1; */
+  max-width: 40rem;
+  width: 80%;
+  background: pink;
+  aspect-ratio: 1.5;
+  margin: 2rem auto;
 }
+
+

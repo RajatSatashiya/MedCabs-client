@@ -15,7 +15,7 @@ function Login() {
 
   const loginUser = async (email, password) => {
     try {
-      const response = await fetch("https://medcabs.herokuapp.com/login", {
+      const response = await fetch("/login", {
         method: "POST",
         body: JSON.stringify({
           email,
@@ -89,7 +89,7 @@ function Login() {
           </label>
           <br></br>
 
-          <div className={error == "" ? "" : "errorMessage"}>{error}</div>
+          <div className={error === "" ? "" : "errorMessage"}>{error}</div>
           <button className="btn" type="submit">
             LOGIN
           </button>

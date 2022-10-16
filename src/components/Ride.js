@@ -9,17 +9,15 @@ function Ride() {
 
   const rideHistory = async () => {
     try {
-      const response = await fetch(
-        "https://medcabs.herokuapp.com/rides/getRides",
-        {
-          method: "GET",
-          headers: {
-            "Content-type": "application/json; charset=UTF-8",
-            Authorization: "Bearer " + authContext.token,
-          },
-        }
-      );
+      const response = await fetch("/rides/getRides", {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          Authorization: "Bearer " + authContext.token,
+        },
+      });
       const data = await response.json();
+      console.log(data);
       setRides(data);
     } catch (e) {
       console.log("Error: " + e);
