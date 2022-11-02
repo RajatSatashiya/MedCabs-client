@@ -17,7 +17,7 @@ function Signup() {
 
   const createUser = async (name, email, password) => {
     try {
-      const response = await fetch("/signup", {
+      const response = await fetch("https://medcabs.herokuapp.com/signup", {
         method: "POST",
         body: JSON.stringify({
           name,

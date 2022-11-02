@@ -20,7 +20,7 @@ function Faq() {
 
   const sendFaq = async (faq) => {
     try {
-      await fetch("/faq", {
+      await fetch("https://medcabs.herokuapp.com/faq", {
         method: "POST",
         body: JSON.stringify({
           question: faq,
